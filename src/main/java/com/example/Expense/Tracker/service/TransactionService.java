@@ -8,4 +8,5 @@ public interface TransactionService {
     Transaction addTransaction(Transaction transaction, String username);
     List<Transaction> getAllTransactions(String username);
     void deleteTransaction(Long id, String username);
+    List<Transaction> getAll();
 }
