@@ -45,4 +45,9 @@ public class TransactionServiceImpl implements TransactionService {
             throw new RuntimeException("Transaction not found or does not belong to the user: " + username);
         }
     }
+
+    @Override
+    public List<Transaction> getEvery(){
+        return transactionRepository.findAll();
+    }
 }

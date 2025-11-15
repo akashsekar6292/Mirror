@@ -32,4 +32,10 @@ public class TransactionController {
     public void deleteTransaction(@PathVariable String username, @PathVariable Long id) {
         transactionService.deleteTransaction(id, username);
     }
+
+    // Get all transactions
+    @GetMapping("/alltransaction")
+    public List<Transaction> getEvery(){
+        return  transactionService.getEvery();
+    }
 }
