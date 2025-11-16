@@ -2,6 +2,9 @@ package com.example.Expense.Tracker.controller;
 
 import com.example.Expense.Tracker.model.User;
 import com.example.Expense.Tracker.service.UserService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +31,11 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User user) {
         return userService.login(user.getUsername(), user.getPassword());
+    }
+    
+    @GetMapping("/allUsers")
+    public List<User> getAll(){
+    	return userService.getAll();
     }
 
 }
