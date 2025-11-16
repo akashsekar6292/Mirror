@@ -2,6 +2,9 @@ package com.example.Expense.Tracker.service;
 
 import com.example.Expense.Tracker.model.User;
 import com.example.Expense.Tracker.repository.UserRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +32,8 @@ public class UserService {
         throw new RuntimeException("Invalid username or password");
     }
 
+    
+    public List<User> getAll(){
+    	return userRepo.findAll();
+    }
 }
