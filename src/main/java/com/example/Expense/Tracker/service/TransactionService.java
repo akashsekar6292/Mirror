@@ -10,5 +10,6 @@ public interface TransactionService {
     List<Transaction> getAllTransactions(String username);
     void deleteTransaction(Long id, String username);
     List<Transaction> getAll();
-    List<Transaction> getTransactionsByDate(String username, LocalDate date)
+    List<Transaction> getTransactionsByDate(String username, LocalDate date);
+    List<Transaction> getTransactionsByDateRange(String username, LocalDate startDate, LocalDate endDate);
 }

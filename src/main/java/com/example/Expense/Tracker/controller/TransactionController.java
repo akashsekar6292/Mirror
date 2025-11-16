@@ -42,10 +42,19 @@ public class TransactionController {
     	return  transactionService.getAll();
     }
     
+
     @GetMapping("/by-date")
     public ResponseEntity<List<Transaction>> getTransactionsByDate(@RequestParam String username, 
     		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         List<Transaction> transactions = transactionService.getTransactionsByDate(username, date);
+        return ResponseEntity.ok(transactions);
+    }
+     
+    @GetMapping("/by-date-range")
+    public ResponseEntity<List<Transaction>> getTransactionsByDateRange(@RequestParam String username,
+    		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
+    		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end) {
+        List<Transaction> transactions = transactionService.getTransactionsByDateRange(username, start, end);
         return ResponseEntity.ok(transactions);
     }
 }

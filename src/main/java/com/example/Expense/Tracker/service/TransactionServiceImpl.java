@@ -56,4 +56,9 @@ public class TransactionServiceImpl implements TransactionService {
     public List<Transaction> getTransactionsByDate(String username, LocalDate date) {
         return transactionRepository.findByUserUsernameAndDate(username, date);
     }
+    
+    @Override
+    public List<Transaction> getTransactionsByDateRange(String username, LocalDate startDate, LocalDate endDate) {
+        return transactionRepository.findByUserUsernameAndDateBetween(username, startDate, endDate);
+    }
 }
