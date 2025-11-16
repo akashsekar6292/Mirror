@@ -2,6 +2,7 @@ package com.example.Expense.Tracker.service;
 
 import com.example.Expense.Tracker.model.Transaction;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TransactionService {
@@ -9,4 +10,5 @@ public interface TransactionService {
     List<Transaction> getAllTransactions(String username);
     void deleteTransaction(Long id, String username);
     List<Transaction> getAll();
+    List<Transaction> getTransactionsByDate(String username, LocalDate date)
 }

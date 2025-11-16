@@ -7,6 +7,7 @@ import com.example.Expense.Tracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -49,5 +50,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> getAll(){
     	return transactionRepository.findAll();
+    }
+    
+    @Override
+    public List<Transaction> getTransactionsByDate(String username, LocalDate date) {
+        return transactionRepository.findByUserUsernameAndDate(username, date);
     }
 }

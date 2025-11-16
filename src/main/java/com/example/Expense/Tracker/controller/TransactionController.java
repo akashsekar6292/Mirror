@@ -3,8 +3,11 @@ package com.example.Expense.Tracker.controller;
 import com.example.Expense.Tracker.model.Transaction;
 import com.example.Expense.Tracker.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -37,5 +40,12 @@ public class TransactionController {
     @GetMapping("/alltransaction")
     public List<Transaction> getAll(){
     	return  transactionService.getAll();
+    }
+    
+    @GetMapping("/by-date")
+    public ResponseEntity<List<Transaction>> getTransactionsByDate(@RequestParam String username, 
+    		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        List<Transaction> transactions = transactionService.getTransactionsByDate(username, date);
+        return ResponseEntity.ok(transactions);
     }
 }
