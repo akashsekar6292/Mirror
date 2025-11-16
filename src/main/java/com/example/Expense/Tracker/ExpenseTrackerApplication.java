@@ -9,6 +9,7 @@ public class ExpenseTrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExpenseTrackerApplication.class, args);
         System.out.println("Application started by Darwin & Thomas");
+        System.out.println("Practice stash with help");
 	}
 
 }
