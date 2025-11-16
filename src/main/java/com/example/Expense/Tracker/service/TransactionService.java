@@ -12,4 +12,5 @@ public interface TransactionService {
     List<Transaction> getAll();
     List<Transaction> getTransactionsByDate(String username, LocalDate date);
     List<Transaction> getTransactionsByDateRange(String username, LocalDate startDate, LocalDate endDate);
+    List<Transaction> getExpenseName(String expense);
 }

@@ -61,4 +61,9 @@ public class TransactionServiceImpl implements TransactionService {
     public List<Transaction> getTransactionsByDateRange(String username, LocalDate startDate, LocalDate endDate) {
         return transactionRepository.findByUserUsernameAndDateBetween(username, startDate, endDate);
     }
+
+	@Override
+	public List<Transaction> getExpenseName(String expense) {
+		return transactionRepository.findByTextContainingIgnoreCase(expense);
+	}
 }

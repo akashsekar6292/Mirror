@@ -42,7 +42,8 @@ public class TransactionController {
     	return  transactionService.getAll();
     }
     
-
+//    http://localhost:8080/ExpTrack/transactions/by-date?username=john_doe&date=2025-11-07
+//    http://localhost:8080/ExpTrack/transactions/by-date?username=john_doe&date=2025-11-01
     @GetMapping("/by-date")
     public ResponseEntity<List<Transaction>> getTransactionsByDate(@RequestParam String username, 
     		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
@@ -50,11 +51,18 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
      
+//    http://localhost:8080/ExpTrack/transactions/by-date-range?username=john_doe&start=2025-11-01&end=2025-11-30
     @GetMapping("/by-date-range")
     public ResponseEntity<List<Transaction>> getTransactionsByDateRange(@RequestParam String username,
     		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
     		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end) {
         List<Transaction> transactions = transactionService.getTransactionsByDateRange(username, start, end);
+        return ResponseEntity.ok(transactions);
+    }
+    
+    @GetMapping("/{expense}")
+    public ResponseEntity<List<Transaction>> getTransactionsByText(@PathVariable String expense) {
+        List<Transaction> transactions = transactionService.getExpenseName(expense);
         return ResponseEntity.ok(transactions);
     }
 }
